@@ -1,35 +1,24 @@
 #define DATA_DECL int a1, a2, a3, a4, a5
 #define DATA_INIT a1 = 0; a2 = 0; a3 = 0; a4 = 0; a5 = 0;
 
-class Empty{
-
-};
+class Empty{ };
 
 class EmptyC{
 public:
-	EmptyC(){
-
-	}
+	EmptyC(){ }
 };
 
 class EmptyD{
 public:
-	~EmptyD(){
-
-	}
+	~EmptyD(){ }
 };
 
 class EmptyCD
 {
 public:
-	EmptyCD(){
+	EmptyCD(){ }
 
-	}
-
-	~EmptyCD(){
-
-	}
-	
+	~EmptyCD(){ }	
 };
 
 
@@ -53,9 +42,7 @@ public:
 class FilledD
 {
 public:
-	~FilledD(){
-
-	}
+	~FilledD(){ }
 	
 	DATA_DECL;
 };
@@ -67,9 +54,7 @@ public:
 		DATA_INIT;
 	}
 
-	~FilledCD(){
-
-	}
+	~FilledCD(){ }
 	
 	DATA_DECL;
 };
