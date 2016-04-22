@@ -43,6 +43,72 @@ TestResult test(int count){
 	return result;
 }
 
+TestResult test(int count, int testsCount){
+	TestResult result;
+
+	result.AllocTest.Empty    = 0;
+	result.AllocTest.EmptyC   = 0;
+	result.AllocTest.EmptyD   = 0;
+	result.AllocTest.EmptyCD  = 0;
+	result.AllocTest.Filled   = 0;
+	result.AllocTest.FilledC  = 0;
+	result.AllocTest.FilledD  = 0;
+	result.AllocTest.FilledCD = 0;
+
+	result.FreeTest.Empty    = 0;
+	result.FreeTest.EmptyC   = 0;
+	result.FreeTest.EmptyD   = 0;
+	result.FreeTest.EmptyCD  = 0;
+	result.FreeTest.Filled   = 0;
+	result.FreeTest.FilledC  = 0;
+	result.FreeTest.FilledD  = 0;
+	result.FreeTest.FilledCD = 0;
+
+	for (int i = 0; i < testsCount; i++){
+		auto t = test(count);
+
+		result.AllocTest.Empty    += t.AllocTest.Empty;
+		result.AllocTest.EmptyC   += t.AllocTest.EmptyC;
+		result.AllocTest.EmptyD   += t.AllocTest.EmptyD;
+		result.AllocTest.EmptyCD  += t.AllocTest.EmptyCD;
+		result.AllocTest.Filled   += t.AllocTest.Filled;
+		result.AllocTest.FilledC  += t.AllocTest.FilledC;
+		result.AllocTest.FilledD  += t.AllocTest.FilledD;
+		result.AllocTest.FilledCD += t.AllocTest.FilledCD;
+
+		result.FreeTest.Empty    += t.FreeTest.Empty;
+		result.FreeTest.EmptyC   += t.FreeTest.EmptyC;
+		result.FreeTest.EmptyD   += t.FreeTest.EmptyD;
+		result.FreeTest.EmptyCD  += t.FreeTest.EmptyCD;
+		result.FreeTest.Filled   += t.FreeTest.Filled;
+		result.FreeTest.FilledC  += t.FreeTest.FilledC;
+		result.FreeTest.FilledD  += t.FreeTest.FilledD;
+		result.FreeTest.FilledCD += t.FreeTest.FilledCD;
+	}
+
+	result.AllocTest.Empty    /= testsCount;
+	result.AllocTest.EmptyC   /= testsCount;
+	result.AllocTest.EmptyD   /= testsCount;
+	result.AllocTest.EmptyCD  /= testsCount;
+	result.AllocTest.Filled   /= testsCount;
+	result.AllocTest.FilledC  /= testsCount;
+	result.AllocTest.FilledD  /= testsCount;
+	result.AllocTest.FilledCD /= testsCount;
+
+	result.FreeTest.Empty    /= testsCount;
+	result.FreeTest.EmptyC   /= testsCount;
+	result.FreeTest.EmptyD   /= testsCount;
+	result.FreeTest.EmptyCD  /= testsCount;
+	result.FreeTest.Filled   /= testsCount;
+	result.FreeTest.FilledC  /= testsCount;
+	result.FreeTest.FilledD  /= testsCount;
+	result.FreeTest.FilledCD /= testsCount;
+
+	result.count = count;
+
+	return result;
+}
+
 // --- Drawing table -----------------------------------------------
 
 const int COL1_WIDTH = 13;
