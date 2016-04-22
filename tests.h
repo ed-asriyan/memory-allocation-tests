@@ -2,7 +2,9 @@
 #define TESTS_H
 
 #include <time.h>
-#include <iostream>
+#include <ostream>
+#include <iomanip>
+
 #include "classes/tester.h"
 #include "classes/core.h"
 
@@ -26,5 +28,7 @@ struct TestResult{
 };
 
 TestResult test(int count);
+
+std::ostream& operator<<(std::ostream&, const TestResult&);
 
 #endif
