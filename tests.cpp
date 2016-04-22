@@ -103,6 +103,8 @@ template<typename T1, typename T2, typename T3> void printRow(std::ostream& stre
 
 std::ostream& operator<<(std::ostream& stream, const TestResult& test){
 	printHead(stream);
+	stream << V << std::setw(WIDTH / 2 + 2) << test.count << std::setw(WIDTH / 2 + 2) << V << '\n';
+	printHead(stream);
 	printRow(stream, "Class", "Allocate", "Free");
 	printRow(stream, "Empty", test.AllocTest.Empty, test.FreeTest.Empty);
 	printRow(stream, "EmptyC", test.AllocTest.EmptyC, test.FreeTest.EmptyC);
