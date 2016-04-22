@@ -28,6 +28,7 @@ struct TestResult{
 };
 
 TestResult test(int count);
+TestResult test(int count, int testCount);
 
 std::ostream& operator<<(std::ostream&, const TestResult&);
 
