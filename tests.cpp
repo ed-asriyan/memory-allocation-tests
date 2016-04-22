@@ -14,23 +14,28 @@ TestResult test(int count){
 	TestResult result;
 
 	result.AllocTest.Empty   = empty.AllocateTest(count);
-	result.AllocTest.EmptyC  = emptyC.AllocateTest(count);
-	result.AllocTest.EmptyD  = emptyD.AllocateTest(count);
-	result.AllocTest.EmptyCD = emptyCD.AllocateTest(count);
-
-	result.AllocTest.Filled   = filled.AllocateTest(count);
-	result.AllocTest.FilledC  = filledC.AllocateTest(count);
-	result.AllocTest.FilledD  = filledD.AllocateTest(count);
-	result.AllocTest.FilledCD = filledCD.AllocateTest(count);
-
 	result.FreeTest.Empty   = empty.FreeTest();
+
+	result.AllocTest.EmptyC  = emptyC.AllocateTest(count);
 	result.FreeTest.EmptyC  = emptyC.FreeTest();
+
+	result.AllocTest.EmptyD  = emptyD.AllocateTest(count);
 	result.FreeTest.EmptyD  = emptyD.FreeTest();
+
+	result.AllocTest.EmptyCD = emptyCD.AllocateTest(count);
 	result.FreeTest.EmptyCD = emptyCD.FreeTest();
 
+
+	result.AllocTest.Filled   = filled.AllocateTest(count);
 	result.FreeTest.Filled   = filled.FreeTest();
+
+	result.AllocTest.FilledC  = filledC.AllocateTest(count);
 	result.FreeTest.FilledC  = filledC.FreeTest();
+
+	result.AllocTest.FilledD  = filledD.AllocateTest(count);
 	result.FreeTest.FilledD  = filledD.FreeTest();
+
+	result.AllocTest.FilledCD = filledCD.AllocateTest(count);
 	result.FreeTest.FilledCD = filledCD.FreeTest();
 
 	result.count = count;
