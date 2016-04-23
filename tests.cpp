@@ -1,4 +1,6 @@
 #include "tests.h"
+#include <iomanip>
+#include <fstream>
 
 TestResult test(int count){
 	Tester<Empty>   empty;
@@ -121,7 +123,6 @@ const char H = '-';
 const char V = '|';
 const char N = '+';
 
-#include <iomanip>
 template<typename T> void print(std::ostream& stream, const T& t, int width)
 {
 	stream << std::setw(width - 1) << t << ' ';
@@ -182,4 +183,100 @@ std::ostream& operator<<(std::ostream& stream, const TestResult& test){
 	printRow(stream, "FilledCD", test.AllocTest.FilledCD, test.FreeTest.FilledCD);
 
 	return stream;
+}
+
+// --- To file for excel -------------------------------------------
+
+void testToFileForExcel(std::ostream& stream, int lowerCountBorder, int hightCountBorder, int step = 1, int testsCount = 1){
+	const char SEP = '|';
+
+	int count = (hightCountBorder - lowerCountBorder + 1) / step;
+
+	TestResult* results = new TestResult[count];
+
+	stream << "Name" << SEP;
+	for (int i = lowerCountBorder, k = 0; i <= hightCountBorder; i += step, k++){
+		results[k] = test(i, testsCount);
+		stream << i << SEP;
+	}
+
+	// Allocation
+	stream << "\nEmpty Allocation" << SEP;
+	for (int i = 0; i < count; i++){
+		stream << results[i].AllocTest.Empty << SEP;
+	}
+	stream << "\nEmptyC Allocation" << SEP;
+	for (int i = 0; i < count; i++){
+		stream << results[i].AllocTest.EmptyC << SEP;
+	}
+	stream << "\nEmptyD Allocation" << SEP;
+	for (int i = 0; i < count; i++){
+		stream << results[i].AllocTest.EmptyD << SEP;
+	}
+	stream << "\nEmptyCD Allocation" << SEP;
+	for (int i = 0; i < count; i++){
+		stream << results[i].AllocTest.EmptyCD << SEP;
+	}
+	stream << "\nFilled Allocation" << SEP;
+	for (int i = 0; i < count; i++){
+		stream << results[i].AllocTest.Filled << SEP;
+	}
+	stream << "\nFilledC Allocation" << SEP;
+	for (int i = 0; i < count; i++){
+		stream << results[i].AllocTest.FilledC << SEP;
+	}
+	stream << "\nFilledD Allocation" << SEP;
+	for (int i = 0; i < count; i++){
+		stream << results[i].AllocTest.FilledD << SEP;
+	}
+	stream << "\nFilledCD Allocation" << SEP;
+	for (int i = 0; i < count; i++){
+		stream << results[i].AllocTest.FilledCD << SEP;
+	}
+
+
+	// Free
+	stream << "\nEmpty Free" << SEP;
+	for (int i = 0; i < count; i++){
+		stream << results[i].FreeTest.Empty << SEP;
+	}
+	stream << "\nEmptyC Free" << SEP;
+	for (int i = 0; i < count; i++){
+		stream << results[i].FreeTest.EmptyC << SEP;
+	}
+	stream << "\nEmptyD Free" << SEP;
+	for (int i = 0; i < count; i++){
+		stream << results[i].FreeTest.EmptyD << SEP;
+	}
+	stream << "\nEmptyCD Free" << SEP;
+	for (int i = 0; i < count; i++){
+		stream << results[i].FreeTest.EmptyCD << SEP;
+	}
+	stream << "\nFilled Free" << SEP;
+	for (int i = 0; i < count; i++){
+		stream << results[i].FreeTest.Filled << SEP;
+	}
+	stream << "\nFilledC Free" << SEP;
+	for (int i = 0; i < count; i++){
+		stream << results[i].FreeTest.FilledC << SEP;
+	}
+	stream << "\nFilledD Free" << SEP;
+	for (int i = 0; i < count; i++){
+		stream << results[i].FreeTest.FilledD << SEP;
+	}
+	stream << "\nFilledCD Free" << SEP;
+	for (int i = 0; i < count; i++){
+		stream << results[i].FreeTest.FilledCD << SEP;
+	}
+
+	delete[] results;
+}
+
+void testToFileForExcel(const char* fileName, int lowerCountBorder, int hightCountBorder, int elemCount, int testsCount = 1){
+	std::ofstream fStream(fileName);
+	if (fStream.fail()){
+		return;
+	}
+	testToFileForExcel(fStream, lowerCountBorder, hightCountBorder, elemCount, testsCount);
+	fStream.close();
 }

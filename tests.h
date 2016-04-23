@@ -2,8 +2,6 @@
 #define TESTS_H
 
 #include <time.h>
-#include <ostream>
-#include <iomanip>
 
 #include "classes/tester.h"
 #include "classes/core.h"
@@ -29,6 +27,9 @@ struct TestResult{
 
 TestResult test(int count);
 TestResult test(int count, int testCount);
+
+void testToFileForExcel(const char* fileName, int lowerCountBorder, int hightCountBorder, int elemCount, int testsCount = 1);
+void testToFileForExcel(std::ostream& stream, int lowerCountBorder, int hightCountBorder, int elemCount, int testsCount = 1);
 
 std::ostream& operator<<(std::ostream&, const TestResult&);
 
