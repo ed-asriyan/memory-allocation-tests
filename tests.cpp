@@ -1,6 +1,4 @@
 #include "tests.h"
-#include <iomanip>
-#include <fstream>
 
 TestResult test(int count){
 	Tester<Empty>   empty;
@@ -178,7 +176,7 @@ std::ostream& operator<<(std::ostream& stream, const TestResult& test){
 	printRow(stream, "EmptyD", test.AllocTest.EmptyD, test.FreeTest.EmptyD);
 	printRow(stream, "EmptyCD", test.AllocTest.EmptyCD, test.FreeTest.EmptyCD);
 	printRow(stream, "Filled", test.AllocTest.Filled, test.FreeTest.Filled);
-	printRow(stream, "FillesC", test.AllocTest.FilledC, test.FreeTest.FilledC);
+	printRow(stream, "FilledC", test.AllocTest.FilledC, test.FreeTest.FilledC);
 	printRow(stream, "FilledD", test.AllocTest.FilledD, test.FreeTest.FilledD);
 	printRow(stream, "FilledCD", test.AllocTest.FilledCD, test.FreeTest.FilledCD);
 
@@ -187,7 +185,7 @@ std::ostream& operator<<(std::ostream& stream, const TestResult& test){
 
 // --- To file for excel -------------------------------------------
 
-void testToFileForExcel(std::ostream& stream, int lowerCountBorder, int hightCountBorder, int step = 1, int testsCount = 1){
+void testToFileForExcel(std::ostream& stream, int lowerCountBorder, int hightCountBorder, int step, int testsCount){
 	const char SEP = '|';
 
 	int count = (hightCountBorder - lowerCountBorder + 1) / step;
@@ -272,11 +270,11 @@ void testToFileForExcel(std::ostream& stream, int lowerCountBorder, int hightCou
 	delete[] results;
 }
 
-void testToFileForExcel(const char* fileName, int lowerCountBorder, int hightCountBorder, int elemCount, int testsCount = 1){
+void testToFileForExcel(const char* fileName, int lowerCountBorder, int hightCountBorder, int step, int testsCount){
 	std::ofstream fStream(fileName);
 	if (fStream.fail()){
 		return;
 	}
-	testToFileForExcel(fStream, lowerCountBorder, hightCountBorder, elemCount, testsCount);
+	testToFileForExcel(fStream, lowerCountBorder, hightCountBorder, step, testsCount);
 	fStream.close();
 }
