@@ -9,15 +9,15 @@
 #include "classes/core.h"
 
 struct MemoryTestResult{
-	clock_t Empty;
-	clock_t EmptyC;
-	clock_t EmptyD;
-	clock_t EmptyCD;
+	double Empty;
+	double EmptyC;
+	double EmptyD;
+	double EmptyCD;
 
-	clock_t Filled;
-	clock_t FilledC;
-	clock_t FilledD;
-	clock_t FilledCD;
+	double Filled;
+	double FilledC;
+	double FilledD;
+	double FilledCD;
 };
 
 struct TestResult{
