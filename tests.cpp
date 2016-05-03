@@ -276,5 +276,4 @@ void testToFileForExcel(const char* fileName, int lowerCountBorder, int hightCou
 		return;
 	}
 	testToFileForExcel(fStream, lowerCountBorder, hightCountBorder, step, testsCount);
-	fStream.close();
 }
