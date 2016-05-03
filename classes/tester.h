@@ -29,26 +29,26 @@ public:
 	clock_t AllocateTest(int count){
 		if (count <= 0) return 0;
 
-		if (items){
-			delete[] items;
-		}
+		FreeTest();
 
-		clock_t begin = clock();
-		items = new T[count];
-		clock_t end = clock();
+		clock_t begin = 0;
+		clock_t end   = 0;
+
+		while (!items){
+			begin = clock();
+			items = new T[count];
+			end = clock();
+		}
 
 		return end - begin;
 	}
 
 	clock_t FreeTest(){
-		if (!items) return 0;
-
 		clock_t begin = clock();
 		delete[] items;
 		clock_t end = clock();
 
 		items = nullptr;
-
 		return end - begin;
 	}
 };
