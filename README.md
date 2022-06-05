@@ -1,4 +1,6 @@
 # Measuring the creation and deletion times of objects with constructors, destructors and without them
+> Written at the time when I was a 1st year student - so sorry for English ☺️
+
 ## Types
 The following data types were created:
 
